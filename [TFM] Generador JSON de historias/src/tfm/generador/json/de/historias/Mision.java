@@ -15,16 +15,16 @@ import org.json.JSONObject;
  *
  * @author Juanca
  */
-public class Mision {
+public class Mision extends JSONObject {
 
-    private String nombre;
-    private String icono;
-    private JSONObject coordenadas;
-    private String tipo;
-    private JSONArray precedentes;
-    private String texto;
+    private final String nombre;
+    private final String icono;
+    private final JSONObject coordenadas;
+    private final String tipo;
+    private final JSONArray precedentes;
+    private final String texto;
 
-    public Mision(String n, String i, String ti, String te, JSONObject coor,JSONArray prec) {
+    public Mision(String n, String i, String ti, String te, JSONObject coor, JSONArray prec) {
         this.nombre = n;
         this.icono = i;
         this.tipo = ti;
@@ -33,7 +33,7 @@ public class Mision {
         this.precedentes = prec;
     }
 
-    public void crearJson() throws JSONException, IOException {
+    public JSONObject crearJson() throws JSONException, IOException {
         JSONObject obj = new JSONObject();
         obj.put("Nombre", nombre);
         obj.put("Icono", icono);
@@ -42,6 +42,7 @@ public class Mision {
         obj.put("Coordenadas", coordenadas);
         obj.put("Precedentes", precedentes);
 
+        /*
         try {
 
             FileWriter file = new FileWriter("prueba.json");
@@ -55,8 +56,8 @@ public class Mision {
             //manejar error
         }
 
-        System.out.print(obj.toString());
-
+        System.out.print(obj.toString());*/
+        return obj;
     }
 
 }

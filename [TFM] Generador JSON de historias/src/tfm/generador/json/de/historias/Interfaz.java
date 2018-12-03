@@ -7,6 +7,7 @@ package tfm.generador.json.de.historias;
 
 import java.awt.Component;
 import javax.swing.JTabbedPane;
+import org.json.JSONArray;
 
 /**
  *
@@ -38,7 +39,7 @@ public class Interfaz extends javax.swing.JFrame {
         BotonGuardar = new javax.swing.JButton();
         BotonAnadir = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
-        SOY_EL_TAB = new javax.swing.JTabbedPane();
+        tab = new javax.swing.JTabbedPane();
         ES_EL_PANEL = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,6 +62,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setText("Nombre de la historia:");
 
         BotonGuardar.setText("Guardar historia");
+        BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarActionPerformed(evt);
+            }
+        });
 
         BotonAnadir.setText("Añadir misión");
         BotonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +85,13 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo");
 
+        jTextFieldN1.setText("1");
+
+        jTextFieldI1.setText("2");
+
+        jTextFieldLat1.setText("3");
+
+        jTextFieldLon1.setText("4");
         jTextFieldLon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLon1ActionPerformed(evt);
@@ -88,6 +101,8 @@ public class Interfaz extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setText("Precedentes");
+
+        jTextField6.setText("5");
 
         jLabel7.setText("Texto");
 
@@ -155,7 +170,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
         );
 
-        SOY_EL_TAB.addTab("Soy el texto", ES_EL_PANEL);
+        tab.addTab("Soy el texto", ES_EL_PANEL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,7 +193,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(SOY_EL_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,7 +204,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addComponent(SOY_EL_TAB)
+                .addComponent(tab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonGuardar)
@@ -203,12 +218,42 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BotonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnadirActionPerformed
         MisionPanel m = new MisionPanel();
-        this.SOY_EL_TAB.add("Nuevo tab",m);
+        this.tab.add("Nuevo tab", m);
     }//GEN-LAST:event_BotonAnadirActionPerformed
 
     private void jTextFieldLon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLon1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldLon1ActionPerformed
+
+    private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
+        Component[] componentsP = tab.getComponents();
+        System.out.println("El padre tiene " + componentsP.length + " elementos.");
+        for (int i = 0; i < componentsP.length; i++) {
+            System.out.println(componentsP[i].getClass().getName().toString());
+            javax.swing.JPanel jp = (javax.swing.JPanel) componentsP[i];
+
+            Component[] components = jp.getComponents();
+            for (int j = 0; j < components.length; j++) {
+                System.out.println(components[j].getClass().getName().toString());
+            }
+
+            javax.swing.JTextField icono = (javax.swing.JTextField) components[7];
+            System.out.println(icono.getText());
+            javax.swing.JTextField nombre = (javax.swing.JTextField) components[8];
+            System.out.println(nombre.getText());
+            javax.swing.JTextField longitud = (javax.swing.JTextField) components[9];
+            System.out.println(longitud.getText());
+            javax.swing.JTextField latitud = (javax.swing.JTextField) components[10];
+            System.out.println(latitud.getText());
+            javax.swing.JTextField precedentes = (javax.swing.JTextField) components[6];
+            System.out.println(precedentes.getText());
+            javax.swing.JComboBox tipo = (javax.swing.JComboBox)components[11];
+            System.out.println(tipo.getSelectedItem().toString());
+
+        }
+
+        JSONArray historias = new JSONArray();
+    }//GEN-LAST:event_BotonGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -216,7 +261,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonGuardar;
     private javax.swing.JPanel ES_EL_PANEL;
-    private javax.swing.JTabbedPane SOY_EL_TAB;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -233,5 +277,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldLon1;
     private javax.swing.JTextField jTextFieldN1;
     private javax.swing.JTextField jTextFieldTitulo;
+    private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables
 }
