@@ -6,8 +6,13 @@
 package tfm.generador.json.de.historias;
 
 import java.awt.Component;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -23,6 +28,8 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         this.tabs = 1;
+        MisionPanel m = new MisionPanel("#1");
+        this.tab.add("#1", m);
     }
 
     /**
@@ -55,6 +62,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jTextFieldTip1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +118,13 @@ public class Interfaz extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jTextFieldTip1.setText("6");
+        jTextFieldTip1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTip1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ES_EL_PANELLayout = new javax.swing.GroupLayout(ES_EL_PANEL);
         ES_EL_PANEL.setLayout(ES_EL_PANELLayout);
         ES_EL_PANELLayout.setHorizontalGroup(
@@ -133,10 +148,13 @@ public class Interfaz extends javax.swing.JFrame {
                                     .addComponent(jTextFieldI1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                                     .addComponent(jTextFieldN1)
                                     .addGroup(ES_EL_PANELLayout.createSequentialGroup()
-                                        .addComponent(jTextFieldLat1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldLat1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldLon1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldLon1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldTip1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(jLabel7))
                         .addContainerGap(516, Short.MAX_VALUE))))
         );
@@ -159,7 +177,8 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -170,7 +189,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
         );
 
-        tab.addTab("Soy el texto", ES_EL_PANEL);
+        tab.addTab("--", ES_EL_PANEL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,8 +236,9 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnadirActionPerformed
-        MisionPanel m = new MisionPanel();
-        this.tab.add("Nuevo tab", m);
+        ++tabs;
+        MisionPanel m = new MisionPanel("#" + tabs);
+        this.tab.add("#" + tabs, m);
     }//GEN-LAST:event_BotonAnadirActionPerformed
 
     private void jTextFieldLon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLon1ActionPerformed
@@ -227,33 +247,36 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         Component[] componentsP = tab.getComponents();
-        System.out.println("El padre tiene " + componentsP.length + " elementos.");
-        for (int i = 0; i < componentsP.length; i++) {
-            System.out.println(componentsP[i].getClass().getName().toString());
-            javax.swing.JPanel jp = (javax.swing.JPanel) componentsP[i];
-
-            Component[] components = jp.getComponents();
-            for (int j = 0; j < components.length; j++) {
-                System.out.println(components[j].getClass().getName().toString());
-            }
-
-            javax.swing.JTextField icono = (javax.swing.JTextField) components[7];
-            System.out.println(icono.getText());
-            javax.swing.JTextField nombre = (javax.swing.JTextField) components[8];
-            System.out.println(nombre.getText());
-            javax.swing.JTextField longitud = (javax.swing.JTextField) components[9];
-            System.out.println(longitud.getText());
-            javax.swing.JTextField latitud = (javax.swing.JTextField) components[10];
-            System.out.println(latitud.getText());
-            javax.swing.JTextField precedentes = (javax.swing.JTextField) components[6];
-            System.out.println(precedentes.getText());
-            javax.swing.JComboBox tipo = (javax.swing.JComboBox)components[11];
-            System.out.println(tipo.getSelectedItem().toString());
-
-        }
-
         JSONArray historias = new JSONArray();
+        for (int i = 1; i < componentsP.length; i++) {
+            try {
+                System.out.println(componentsP[i].getClass().getName().toString());
+                tfm.generador.json.de.historias.MisionPanel jp = (tfm.generador.json.de.historias.MisionPanel) componentsP[i];
+
+                JSONObject coordenadas = new JSONObject();
+                coordenadas.put("Longitud", jp.getLongitud());
+                coordenadas.put("Latitud", jp.getLatitud());
+                JSONArray pre = new JSONArray(); //<------- Hacer los precedentes después
+                pre.put("16");
+                pre.put("5");
+                pre.put("1");
+                JSONObject tip = new JSONObject();
+                tip.put("Tipo", jp.getComboTipo());
+                tip.put("Codigo", jp.getCodigoTipo());
+
+                Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, pre, "QR".equals(jp.getComboTipo()));
+
+                historias.put(m.crearJson());
+            } catch (JSONException | IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        System.out.println(historias.toString());
     }//GEN-LAST:event_BotonGuardarActionPerformed
+
+    private void jTextFieldTip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTip1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTip1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -276,6 +299,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldLat1;
     private javax.swing.JTextField jTextFieldLon1;
     private javax.swing.JTextField jTextFieldN1;
+    private javax.swing.JTextField jTextFieldTip1;
     private javax.swing.JTextField jTextFieldTitulo;
     private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables

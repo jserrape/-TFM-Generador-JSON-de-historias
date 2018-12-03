@@ -23,13 +23,13 @@ public class QR {
 
     public void generarQR(String codigo, String nombreImg) {
         try {
-            String filePath = nombreImg+".png";
+            String filePath = "QR/"+nombreImg + ".png";
             String charset = "UTF-8";
             Map< EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(new String(codigo.getBytes(charset), charset), BarcodeFormat.QR_CODE, 400, 400, hintMap);
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath.lastIndexOf('.') + 1), new File(filePath));
-            System.out.println("QR Code image created successfully!");
+            System.out.println("QR Code image created successfully!"+filePath);
         } catch (Exception e) {
             System.err.println(e);
         }

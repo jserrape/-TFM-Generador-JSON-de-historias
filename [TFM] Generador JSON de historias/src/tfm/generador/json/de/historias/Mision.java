@@ -17,24 +17,30 @@ import org.json.JSONObject;
  */
 public class Mision extends JSONObject {
 
+    private final String codigo;
     private final String nombre;
     private final String icono;
     private final JSONObject coordenadas;
-    private final String tipo;
+    private final JSONObject tipo;
     private final JSONArray precedentes;
     private final String texto;
 
-    public Mision(String n, String i, String ti, String te, JSONObject coor, JSONArray prec) {
+    private boolean qr;
+
+    public Mision(String cod, String n, String i, JSONObject ti, String te, JSONObject coor, JSONArray prec, boolean qr) {
+        this.codigo = cod;
         this.nombre = n;
         this.icono = i;
         this.tipo = ti;
         this.texto = te;
         this.coordenadas = coor;
         this.precedentes = prec;
+        this.qr = qr;
     }
 
     public JSONObject crearJson() throws JSONException, IOException {
         JSONObject obj = new JSONObject();
+        obj.put("Codigo", codigo);
         obj.put("Nombre", nombre);
         obj.put("Icono", icono);
         obj.put("Tipo", tipo);
@@ -42,21 +48,11 @@ public class Mision extends JSONObject {
         obj.put("Coordenadas", coordenadas);
         obj.put("Precedentes", precedentes);
 
-        /*
-        try {
-
-            FileWriter file = new FileWriter("prueba.json");
-            //ObjectMapper mapper = new ObjectMapper();
-            //String jsonString = mapper.writeValueAsString(obj);
-            file.write(obj.toString());
-            file.flush();
-            file.close();
-
-        } catch (IOException e) {
-            //manejar error
+        if (qr) {
+            QR q = new QR();
+            q.generarQR(codigo, codigo + "_" + nombre);
         }
-
-        System.out.print(obj.toString());*/
+        
         return obj;
     }
 
