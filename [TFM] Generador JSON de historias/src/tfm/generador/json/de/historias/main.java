@@ -38,6 +38,9 @@ public class main {
         historias.put(m1.crearJson());
         historias.put(m2.crearJson());
         System.out.println(historias.toString());
+        
+        QR q = new QR();
+        q.generarQR("Soy una url", "imagenqr");
     }
 
 }
