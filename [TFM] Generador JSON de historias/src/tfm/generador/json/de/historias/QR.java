@@ -31,7 +31,6 @@ public class QR {
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(new String(codigo.getBytes(charset), charset), BarcodeFormat.QR_CODE, 600, 600, hintMap);
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath.lastIndexOf('.') + 1), new File(filePath));
-            //System.out.println("QR Code image created successfully!"+filePath);
         } catch (WriterException | IOException e) {
             System.err.println(e);
         }

@@ -5,7 +5,7 @@
  */
 package tfm.generador.json.de.historias;
 
-import java.io.FileWriter;
+
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +25,7 @@ public class Mision extends JSONObject {
     private final JSONArray precedentes;
     private final String texto;
 
-    private boolean qr;
+    private final boolean qr;
 
     public Mision(String cod, String n, String i, JSONObject ti, String te, JSONObject coor, JSONArray prec, boolean qr) {
         this.codigo = cod;

@@ -64,7 +64,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jTextFieldTip1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldTitulo1 = new javax.swing.JTextField();
+        jTextFieldDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,7 +229,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(27, 27, 27)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -243,7 +243,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextFieldTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -269,14 +269,18 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         Component[] componentsP = tab.getComponents();
-        JSONArray historias = new JSONArray();
+        JSONArray historia = new JSONArray();
         JSONObject titulo = new JSONObject();
+        JSONObject descripcion = new JSONObject();
+        JSONObject codigo = new JSONObject();
         try {
             titulo.put("Nombre historia", jTextFieldTitulo.getText());
+            titulo.put("Descioncion", this.jTextFieldDescripcion.getText());
+            titulo.put("Codigo", jTextFieldTitulo.getText().replaceAll(" ", ""));
         } catch (JSONException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
-        historias.put(titulo);
+        historia.put(titulo);
         for (int i = 1; i < componentsP.length; i++) {
             try {
                 //System.out.println(componentsP[i].getClass().getName().toString());
@@ -292,12 +296,12 @@ public class Interfaz extends javax.swing.JFrame {
 
                 Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()));
 
-                historias.put(m.crearJson());
+                historia.put(m.crearJson());
             } catch (JSONException | IOException ex) {
                 Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println(historias.toString());
+        System.out.println(historia.toString());
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void jTextFieldTip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTip1ActionPerformed
@@ -326,13 +330,13 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldDescripcion;
     private javax.swing.JTextField jTextFieldI1;
     private javax.swing.JTextField jTextFieldLat1;
     private javax.swing.JTextField jTextFieldLon1;
     private javax.swing.JTextField jTextFieldN1;
     private javax.swing.JTextField jTextFieldTip1;
     private javax.swing.JTextField jTextFieldTitulo;
-    private javax.swing.JTextField jTextFieldTitulo1;
     private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables
 }

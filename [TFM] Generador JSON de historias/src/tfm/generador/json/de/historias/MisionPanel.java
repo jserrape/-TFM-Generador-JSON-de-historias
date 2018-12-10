@@ -7,7 +7,6 @@ package tfm.generador.json.de.historias;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import javax.swing.JPanel;
 import org.json.JSONArray;
 
@@ -58,7 +57,7 @@ public class MisionPanel extends JPanel {
         comboTipo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(comboTipo.getSelectedItem().toString()=="QR"){
+                if("QR".equals(comboTipo.getSelectedItem().toString())){
                     codigoTipo.setEnabled(false);
                 }else{
                     codigoTipo.setEnabled(true);
@@ -168,8 +167,8 @@ public class MisionPanel extends JPanel {
         String aux = precedentes.getText().replaceAll(" ", "");
         String[] parts = aux.split(",");
         JSONArray pre= new JSONArray();
-        for(int i=0;i<parts.length;i++){
-            pre.put(parts[i]);
+        for (String part : parts) {
+            pre.put(part);
         }
         return pre;
     }
