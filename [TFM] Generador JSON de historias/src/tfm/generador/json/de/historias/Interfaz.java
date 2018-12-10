@@ -9,7 +9,6 @@ import java.awt.Component;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTabbedPane;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -270,20 +269,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         Component[] componentsP = tab.getComponents();
         JSONArray historia = new JSONArray();
+        JSONArray arrHistorias = new JSONArray();
         JSONObject titulo = new JSONObject();
-        JSONObject descripcion = new JSONObject();
-        JSONObject codigo = new JSONObject();
-        try {
-            titulo.put("Nombre historia", jTextFieldTitulo.getText());
-            titulo.put("Descioncion", this.jTextFieldDescripcion.getText());
-            titulo.put("Codigo", jTextFieldTitulo.getText().replaceAll(" ", ""));
-        } catch (JSONException ex) {
-            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        historia.put(titulo);
+
+
         for (int i = 1; i < componentsP.length; i++) {
             try {
-                //System.out.println(componentsP[i].getClass().getName().toString());
                 tfm.generador.json.de.historias.MisionPanel jp = (tfm.generador.json.de.historias.MisionPanel) componentsP[i];
 
                 JSONObject coordenadas = new JSONObject();
@@ -296,12 +287,25 @@ public class Interfaz extends javax.swing.JFrame {
 
                 Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()));
 
-                historia.put(m.crearJson());
+                arrHistorias.put(m.crearJson());
             } catch (JSONException | IOException ex) {
                 Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println(historia.toString());
+        try {
+            titulo.put("Nombre historia", jTextFieldTitulo.getText());
+            titulo.put("Descripcion", jTextFieldDescripcion.getText());
+            titulo.put("Codigo", jTextFieldTitulo.getText());
+            titulo.put("Misiones", "auxStr");
+            historia.put(titulo);
+        } catch (JSONException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        int inicio = titulo.toString().indexOf("auxStr");
+        int tam = titulo.toString().length();
+        String json =titulo.toString().substring(0, inicio - 1) + arrHistorias.toString() + titulo.toString().substring(inicio + 1 + "auxStr".length(), tam);
+        System.out.println(json);
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void jTextFieldTip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTip1ActionPerformed

@@ -73,7 +73,7 @@ public class MisionPanel extends JPanel {
         icono.setText("2");
         latitud.setText("3");
         longitud.setText("4");
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"QR", "Chisme"}));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"QR", "Beacon"}));
         jLabel6.setText("Precedentes");
         precedentes.setText("5");
         jLabel7.setText("Texto");
