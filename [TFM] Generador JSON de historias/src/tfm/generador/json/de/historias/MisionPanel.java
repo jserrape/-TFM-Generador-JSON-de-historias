@@ -5,7 +5,11 @@
  */
 package tfm.generador.json.de.historias;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 import javax.swing.JPanel;
+import org.json.JSONArray;
 
 /**
  *
@@ -30,11 +34,11 @@ public class MisionPanel extends JPanel {
     private final javax.swing.JTextField nombre;
 
     private final String codigo;
-    
+
     public MisionPanel(String cod) {
         super();
 
-        this.codigo=cod;
+        this.codigo = cod;
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,6 +54,17 @@ public class MisionPanel extends JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
         codigoTipo = new javax.swing.JTextField();
+
+        comboTipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(comboTipo.getSelectedItem().toString()=="QR"){
+                    codigoTipo.setEnabled(false);
+                }else{
+                    codigoTipo.setEnabled(true);
+                }
+            }
+        });
 
         jLabel2.setText("Nombre");
         jLabel3.setText("Icono");
@@ -68,7 +83,7 @@ public class MisionPanel extends JPanel {
         jScrollPane1.setViewportView(texto);
         codigoTipo.setText(codigo);
         codigoTipo.setEnabled(false);
-        
+
         javax.swing.GroupLayout thisLayout = new javax.swing.GroupLayout(this);
         this.setLayout(thisLayout);
         thisLayout.setHorizontalGroup(thisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +164,14 @@ public class MisionPanel extends JPanel {
     /**
      * @return the precedentes
      */
-    public String getPrecedentes() {
-        return precedentes.getText();
+    public JSONArray getPrecedentes() {
+        String aux = precedentes.getText().replaceAll(" ", "");
+        String[] parts = aux.split(",");
+        JSONArray pre= new JSONArray();
+        for(int i=0;i<parts.length;i++){
+            pre.put(parts[i]);
+        }
+        return pre;
     }
 
     /**
@@ -187,8 +208,8 @@ public class MisionPanel extends JPanel {
     public String getNombre() {
         return nombre.getText();
     }
-    
-        /**
+
+    /**
      * @return the codigo
      */
     public String getCodigo() {
