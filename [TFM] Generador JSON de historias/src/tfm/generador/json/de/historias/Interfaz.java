@@ -6,7 +6,9 @@
 package tfm.generador.json.de.historias;
 
 import java.awt.Component;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -51,17 +53,19 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldN1 = new javax.swing.JTextField();
-        jTextFieldI1 = new javax.swing.JTextField();
-        jTextFieldLat1 = new javax.swing.JTextField();
-        jTextFieldLon1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        nombre = new javax.swing.JTextField();
+        icono = new javax.swing.JTextField();
+        latitud = new javax.swing.JTextField();
+        longitud = new javax.swing.JTextField();
+        comboTipo = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        precedentes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jTextFieldTip1 = new javax.swing.JTextField();
+        codigoTipo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        pistaAudio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldDescripcion = new javax.swing.JTextField();
 
@@ -100,24 +104,24 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo");
 
-        jTextFieldN1.setText("1");
+        nombre.setText("1");
 
-        jTextFieldI1.setText("2");
+        icono.setText("2");
 
-        jTextFieldLat1.setText("3");
+        latitud.setText("3");
 
-        jTextFieldLon1.setText("4");
-        jTextFieldLon1.addActionListener(new java.awt.event.ActionListener() {
+        longitud.setText("4");
+        longitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldLon1ActionPerformed(evt);
+                longitudActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setText("Precedentes");
 
-        jTextField6.setText("5");
+        precedentes.setText("5");
 
         jLabel7.setText("Texto");
 
@@ -125,12 +129,16 @@ public class Interfaz extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jTextFieldTip1.setText("6");
-        jTextFieldTip1.addActionListener(new java.awt.event.ActionListener() {
+        codigoTipo.setText("6");
+        codigoTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTip1ActionPerformed(evt);
+                codigoTipoActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Pista de audio:");
+
+        pistaAudio.setText("7");
 
         javax.swing.GroupLayout ES_EL_PANELLayout = new javax.swing.GroupLayout(ES_EL_PANEL);
         ES_EL_PANEL.setLayout(ES_EL_PANELLayout);
@@ -151,19 +159,23 @@ public class Interfaz extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(26, 26, 26)
                                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextFieldI1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldN1)
+                                    .addComponent(precedentes)
+                                    .addComponent(icono, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                                    .addComponent(nombre)
                                     .addGroup(ES_EL_PANELLayout.createSequentialGroup()
                                         .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldLat1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                                            .addComponent(comboTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(latitud, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldLon1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldTip1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(longitud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(codigoTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(89, 89, 89)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pistaAudio))
                             .addComponent(jLabel7))
-                        .addContainerGap(516, Short.MAX_VALUE))))
+                        .addGap(53, 53, 53))))
         );
         ES_EL_PANELLayout.setVerticalGroup(
             ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,25 +183,27 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(pistaAudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldLat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldLon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(latitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(longitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldTip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ES_EL_PANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(precedentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -262,16 +276,15 @@ public class Interfaz extends javax.swing.JFrame {
         this.tab.add("#" + tabs, m);
     }//GEN-LAST:event_BotonAnadirActionPerformed
 
-    private void jTextFieldLon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLon1ActionPerformed
+    private void longitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_longitudActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldLon1ActionPerformed
+    }//GEN-LAST:event_longitudActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         Component[] componentsP = tab.getComponents();
         JSONArray historia = new JSONArray();
         JSONArray arrHistorias = new JSONArray();
         JSONObject titulo = new JSONObject();
-
 
         for (int i = 1; i < componentsP.length; i++) {
             try {
@@ -285,7 +298,7 @@ public class Interfaz extends javax.swing.JFrame {
                 tip.put("Tipo", jp.getComboTipo());
                 tip.put("Codigo", jp.getCodigoTipo());
 
-                Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()));
+                Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()),jp.getPistaAudio());
 
                 arrHistorias.put(m.crearJson());
             } catch (JSONException | IOException ex) {
@@ -304,25 +317,41 @@ public class Interfaz extends javax.swing.JFrame {
 
         int inicio = titulo.toString().indexOf("auxStr");
         int tam = titulo.toString().length();
-        String json =titulo.toString().substring(0, inicio - 1) + arrHistorias.toString() + titulo.toString().substring(inicio + 1 + "auxStr".length(), tam);
+        String json = titulo.toString().substring(0, inicio - 1) + arrHistorias.toString() + titulo.toString().substring(inicio + 1 + "auxStr".length(), tam);
         System.out.println(json);
+        escribirFichero("fichero.json", json);
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
-    private void jTextFieldTip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTip1ActionPerformed
+    private void codigoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoTipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTip1ActionPerformed
+    }//GEN-LAST:event_codigoTipoActionPerformed
 
     private void jTextFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTituloActionPerformed
 
+    private void escribirFichero(String ficheroN, String texto) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+
+        try {
+            fichero = new FileWriter(ficheroN);
+            pw = new PrintWriter(fichero);
+            pw.println(texto);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAnadir;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonGuardar;
     private javax.swing.JPanel ES_EL_PANEL;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField codigoTipo;
+    private javax.swing.JComboBox<String> comboTipo;
+    private javax.swing.JTextField icono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -331,16 +360,16 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextFieldDescripcion;
-    private javax.swing.JTextField jTextFieldI1;
-    private javax.swing.JTextField jTextFieldLat1;
-    private javax.swing.JTextField jTextFieldLon1;
-    private javax.swing.JTextField jTextFieldN1;
-    private javax.swing.JTextField jTextFieldTip1;
     private javax.swing.JTextField jTextFieldTitulo;
+    private javax.swing.JTextField latitud;
+    private javax.swing.JTextField longitud;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField pistaAudio;
+    private javax.swing.JTextField precedentes;
     private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables
 }

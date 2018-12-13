@@ -20,6 +20,7 @@ public class Mision extends JSONObject {
     private final String codigo;
     private final String nombre;
     private final String icono;
+    private final String pistaAudio;
     private final JSONObject coordenadas;
     private final JSONObject tipo;
     private final JSONArray precedentes;
@@ -27,10 +28,11 @@ public class Mision extends JSONObject {
 
     private final boolean qr;
 
-    public Mision(String cod, String n, String i, JSONObject ti, String te, JSONObject coor, JSONArray prec, boolean qr) {
+    public Mision(String cod, String n, String i, JSONObject ti, String te, JSONObject coor, JSONArray prec, boolean qr,String p) {
         this.codigo = cod;
         this.nombre = n;
         this.icono = i;
+        this.pistaAudio=p;
         this.tipo = ti;
         this.texto = te;
         this.coordenadas = coor;
@@ -43,6 +45,7 @@ public class Mision extends JSONObject {
         obj.put("Codigo", codigo);
         obj.put("Nombre", nombre);
         obj.put("Icono", icono);
+        obj.put("Pista de audio", pistaAudio);
         obj.put("Tipo", tipo);
         obj.put("Texto", texto);
         obj.put("Coordenadas", coordenadas);

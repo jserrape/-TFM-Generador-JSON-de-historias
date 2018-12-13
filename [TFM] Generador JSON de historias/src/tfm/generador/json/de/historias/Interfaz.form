@@ -153,25 +153,29 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField6" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldI1" pref="284" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldN1" max="32767" attributes="0"/>
+                                          <Component id="precedentes" max="32767" attributes="0"/>
+                                          <Component id="icono" pref="284" max="32767" attributes="0"/>
+                                          <Component id="nombre" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextFieldLat1" alignment="0" pref="130" max="32767" attributes="0"/>
+                                                  <Component id="comboTipo" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="latitud" alignment="0" pref="130" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextFieldLon1" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                                                  <Component id="jTextFieldTip1" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  <Component id="longitud" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  <Component id="codigoTipo" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pistaAudio" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="516" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -183,29 +187,31 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldN1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pistaAudio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldI1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="icono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldLat1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldLon1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="latitud" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="longitud" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldTip1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="codigoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="precedentes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -236,30 +242,30 @@
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldN1">
+            <Component class="javax.swing.JTextField" name="nombre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldI1">
+            <Component class="javax.swing.JTextField" name="icono">
               <Properties>
                 <Property name="text" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldLat1">
+            <Component class="javax.swing.JTextField" name="latitud">
               <Properties>
                 <Property name="text" type="java.lang.String" value="3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldLon1">
+            <Component class="javax.swing.JTextField" name="longitud">
               <Properties>
                 <Property name="text" type="java.lang.String" value="4"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldLon1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="longitudActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="comboTipo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -279,7 +285,7 @@
                 <Property name="text" type="java.lang.String" value="Precedentes"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
+            <Component class="javax.swing.JTextField" name="precedentes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="5"/>
               </Properties>
@@ -304,13 +310,23 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="jTextFieldTip1">
+            <Component class="javax.swing.JTextField" name="codigoTipo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="6"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTip1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="codigoTipoActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pista de audio:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="pistaAudio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="7"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
