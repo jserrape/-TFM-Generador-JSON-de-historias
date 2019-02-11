@@ -28,6 +28,10 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+
+        setLocationRelativeTo(null);
+        setTitle("Generador JSON de historias geolocalizadas Android");
+
         this.tabs = 1;
         MisionPanel m = new MisionPanel("#1");
         this.tab.add("#1", m);
@@ -42,12 +46,23 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldTitulo = new javax.swing.JTextField();
         BotonGuardar = new javax.swing.JButton();
         BotonAnadir = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         tab = new javax.swing.JTabbedPane();
+        historia_panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldTitulo = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldImagenTitulo = new javax.swing.JTextField();
+        jTextFieldLatitudInicial = new javax.swing.JTextField();
+        jTextFieldZoomInicial = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextFieldDescripcion = new javax.swing.JTextArea();
+        jTextFieldLongitudInicial = new javax.swing.JTextField();
         ES_EL_PANEL = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,19 +81,8 @@ public class Interfaz extends javax.swing.JFrame {
         codigoTipo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         pistaAudio = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextFieldDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel1.setText("Nombre de la historia:");
-
-        jTextFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTituloActionPerformed(evt);
-            }
-        });
 
         BotonGuardar.setText("Guardar historia");
         BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +99,103 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         BotonEliminar.setText("Eliminar misión");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel1.setText("Nombre de la historia");
+
+        jTextFieldTitulo.setText("Buscatesoros UGR");
+        jTextFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTituloActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel8.setText("Descripción de la historia");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel10.setText("Imagen de título");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel12.setText("Coordenadas iniciales de la cámara");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel13.setText("Zoom inicial de la cámara");
+
+        jTextFieldImagenTitulo.setText("titulo");
+
+        jTextFieldLatitudInicial.setText("37.1708");
+
+        jTextFieldZoomInicial.setText("16");
+
+        jTextFieldDescripcion.setColumns(20);
+        jTextFieldDescripcion.setRows(5);
+        jTextFieldDescripcion.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+        jScrollPane2.setViewportView(jTextFieldDescripcion);
+
+        jTextFieldLongitudInicial.setText("-3.607212");
+
+        javax.swing.GroupLayout historia_panelLayout = new javax.swing.GroupLayout(historia_panel);
+        historia_panel.setLayout(historia_panelLayout);
+        historia_panelLayout.setHorizontalGroup(
+            historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(historia_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(historia_panelLayout.createSequentialGroup()
+                        .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(historia_panelLayout.createSequentialGroup()
+                                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(historia_panelLayout.createSequentialGroup()
+                                        .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel10))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldImagenTitulo)))
+                                    .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, historia_panelLayout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jTextFieldLatitudInicial))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, historia_panelLayout.createSequentialGroup()
+                                            .addComponent(jLabel13)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jTextFieldZoomInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldLongitudInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
+                        .addGap(352, 352, 352))))
+        );
+        historia_panelLayout.setVerticalGroup(
+            historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(historia_panelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldImagenTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextFieldLatitudInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLongitudInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(historia_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextFieldZoomInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+        );
+
+        tab.addTab("Historia", historia_panel);
 
         jLabel2.setText("Nombre");
 
@@ -207,13 +308,10 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
 
         tab.addTab("--", ES_EL_PANEL);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel8.setText("Descripción de la historia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,37 +326,14 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(BotonEliminar)
                 .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(27, 27, 27)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap()
+                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonGuardar)
@@ -286,7 +361,7 @@ public class Interfaz extends javax.swing.JFrame {
         JSONArray arrHistorias = new JSONArray();
         JSONObject titulo = new JSONObject();
 
-        for (int i = 1; i < componentsP.length; i++) {
+        for (int i = 2; i < componentsP.length; i++) {
             try {
                 tfm.generador.json.de.historias.MisionPanel jp = (tfm.generador.json.de.historias.MisionPanel) componentsP[i];
 
@@ -309,6 +384,15 @@ public class Interfaz extends javax.swing.JFrame {
             titulo.put("Nombre historia", jTextFieldTitulo.getText());
             titulo.put("Descripcion", jTextFieldDescripcion.getText());
             titulo.put("Codigo", jTextFieldTitulo.getText());
+
+            titulo.put("Imagen de titulo", jTextFieldImagenTitulo.getText());
+            titulo.put("Zoom inicial", jTextFieldZoomInicial.getText());
+
+            JSONObject coor = new JSONObject();
+            coor.put("Latitud inicial", jTextFieldLatitudInicial.getText());
+            coor.put("Longitud inicial", jTextFieldLongitudInicial.getText());
+            titulo.put("Camara inicial", coor);
+
             titulo.put("Misiones", "auxStr");
             historia.put(titulo);
         } catch (JSONException ex) {
@@ -358,8 +442,12 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel ES_EL_PANEL;
     private javax.swing.JTextField codigoTipo;
     private javax.swing.JComboBox<String> comboTipo;
+    private javax.swing.JPanel historia_panel;
     private javax.swing.JTextField icono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -369,9 +457,14 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextArea jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldImagenTitulo;
+    private javax.swing.JTextField jTextFieldLatitudInicial;
+    private javax.swing.JTextField jTextFieldLongitudInicial;
     private javax.swing.JTextField jTextFieldTitulo;
+    private javax.swing.JTextField jTextFieldZoomInicial;
     private javax.swing.JTextField latitud;
     private javax.swing.JTextField longitud;
     private javax.swing.JTextField nombre;
