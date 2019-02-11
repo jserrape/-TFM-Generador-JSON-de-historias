@@ -298,7 +298,7 @@ public class Interfaz extends javax.swing.JFrame {
                 tip.put("Tipo", jp.getComboTipo());
                 tip.put("Codigo", jp.getCodigoTipo());
 
-                Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()),jp.getPistaAudio());
+                Mision m = new Mision(jp.getCodigo(), jp.getNombre(), jp.getIcono(), tip, jp.getTexto(), coordenadas, jp.getPrecedentes(), "QR".equals(jp.getComboTipo()), jp.getPistaAudio());
 
                 arrHistorias.put(m.crearJson());
             } catch (JSONException | IOException ex) {
@@ -318,7 +318,7 @@ public class Interfaz extends javax.swing.JFrame {
         int inicio = titulo.toString().indexOf("auxStr");
         int tam = titulo.toString().length();
         String json = titulo.toString().substring(0, inicio - 1) + arrHistorias.toString() + titulo.toString().substring(inicio + 1 + "auxStr".length(), tam);
-        System.out.println(json);
+        //System.out.println(json);
         escribirFichero("fichero.json", json);
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
@@ -331,17 +331,24 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTituloActionPerformed
 
     private void escribirFichero(String ficheroN, String texto) {
+        System.out.println("escribirFichero: " + texto);
         FileWriter fichero = null;
         PrintWriter pw = null;
-
         try {
             fichero = new FileWriter(ficheroN);
             pw = new PrintWriter(fichero);
-            pw.println(texto);
-        } catch (IOException ex) {
-            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
+            pw.println(texto);
+
+        } catch (IOException e) {
+        } finally {
+            try {
+                if (null != fichero) {
+                    fichero.close();
+                }
+            } catch (IOException e2) {
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
